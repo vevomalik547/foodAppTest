@@ -25,11 +25,11 @@ const HomeScreen = ({ props, route, username }) => {
     }
 
     Animated.spring(translateY, {
-      toValue: scrollY > 100 ? 130 : scrollY,
+      toValue: scrollY > 20 ? 280 : scrollY,
       useNativeDriver: true,
     }).start();
 
-    if (scrollY > 100) {
+    if (scrollY > 180) {
       Animated.spring(tabsTranslateY, {
         toValue: 0,
         useNativeDriver: true,

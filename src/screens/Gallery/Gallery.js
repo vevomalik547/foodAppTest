@@ -33,7 +33,7 @@ const Gallery = () => {
                 <Image source={item.uri} style={styles.image} />
                 {/* Faded Gradient Overlay */}
                 <LinearGradient
-                    colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.5)']}
+                    colors={['rgba(0,0,0,0)', 'rgba(0,0,0,0.8)']}
                     style={styles.gradientOverlay}
                     start={{ x: 0, y: 0 }} // Gradient starts from the top
                     end={{ x: 0, y: 1 }}   // Gradient ends at the bottom
@@ -57,6 +57,7 @@ const Gallery = () => {
                 keyExtractor={(item) => item.id}
                 renderItem={renderItem}
                 numColumns={2} // 2 columns
+                pagingEnabled={false}
                 showsVerticalScrollIndicator={false}
                 columnWrapperStyle={styles.row} // Styling for rows
             />
