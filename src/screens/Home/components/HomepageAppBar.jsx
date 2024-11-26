@@ -7,7 +7,7 @@ import PagerView from 'react-native-pager-view';
 const HomepageAppBar = () => {
     return (
         
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, alignItems: 'center', paddingTop:Platform.OS === 'ios' ? 40 : 10 }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, alignItems: 'center', paddingTop:Platform.OS === 'ios' ? 50 : 50 }}>
             <View style={{}}>
                 <Text style={{ fontSize: 10, color:'#737275', fontWeight:'600' }}>Current location</Text>
 

@@ -1,4 +1,4 @@
-import { StyleSheet, View, Dimensions} from 'react-native';
+import { StyleSheet, View, Dimensions, Text} from 'react-native';
 import React from 'react';
 import Pages from './Pages';
 

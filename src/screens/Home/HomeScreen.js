@@ -8,8 +8,6 @@ const { height, width } = Dimensions.get("window");
 
 const HomeScreen = ({props, route, username}) => {
 
-  // const {username} = route.params || {};
-
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity for animation
   const translateY = useRef(new Animated.Value(0)).current; // Value to translate Feeds component
   const tabsTranslateY = useRef(new Animated.Value(0)).current; // Value for the sticky tabs container
@@ -25,31 +23,28 @@ const HomeScreen = ({props, route, username}) => {
       animateFeeds();
     }
 
-    // Animate Feeds component position (move down by 100 when scrollY > 0)
     Animated.spring(translateY, {
-      toValue: scrollY > 100 ? 130 : scrollY, // Move Feeds component down by 100px when scroll exceeds 100
-      useNativeDriver: true, // Use native driver for performance
+      toValue: scrollY > 100 ? 130 : scrollY, 
+      useNativeDriver: true,
     }).start();
 
-    // Stick tabs to the top once you scroll past the banner
     if (scrollY > 100) {
       Animated.spring(tabsTranslateY, {
-        toValue: 0, // Stick to the top
+        toValue: 0,
         useNativeDriver: true,
       }).start();
     } else {
       Animated.spring(tabsTranslateY, {
-        toValue: scrollY, // Follow scroll position until it reaches the top
+        toValue: scrollY,
         useNativeDriver: true,
       }).start();
     }
   };
 
   const animateFeeds = () => {
-    // Animate opacity to 1 for a smooth fade-in effect
     Animated.timing(fadeAnim, {
-      toValue: 1, // Fully visible
-      duration: 500, // Animation duration (in milliseconds)
+      toValue: 1,
+      duration: 500,
       useNativeDriver: true,
     }).start();
   };
@@ -63,8 +58,8 @@ const HomeScreen = ({props, route, username}) => {
               styles.feedsSection,
               {
                 opacity: fadeAnim,
-                transform: [{ translateY }], // Apply fade and translate animation
-                height: "100%", // Ensure the container takes full height
+                transform: [{ translateY }], 
+                height: "100%", 
               },
             ]}
           >
