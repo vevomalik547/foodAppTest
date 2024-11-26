@@ -1,4 +1,4 @@
-import { StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Image, Platform } from 'react-native'
 import React from 'react'
 import { Ionicons } from 'react-native-vector-icons';
 import PagerView from 'react-native-pager-view';
@@ -7,7 +7,7 @@ import PagerView from 'react-native-pager-view';
 const HomepageAppBar = () => {
     return (
         
-        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: 20, alignItems: 'center', paddingTop:Platform.OS === 'ios' ? 40 : 10 }}>
             <View style={{}}>
                 <Text style={{ fontSize: 10, color:'#737275', fontWeight:'600' }}>Current location</Text>
 
@@ -18,7 +18,7 @@ const HomepageAppBar = () => {
                 </View>
             </View>
             <View style={{}}>
-                <TouchableOpacity onPress={() => console.log('object')}>
+                <TouchableOpacity onPress={() => console.log('Hello There')}>
                     <Image source={require('../../../../assets/notiIcon.png')} />
                 </TouchableOpacity>
             </View>
