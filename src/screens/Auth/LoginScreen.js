@@ -50,11 +50,14 @@ export default function LoginScreen({ navigation }) {
       const user = await response.json();
       await AsyncStorage.setItem("@user", JSON.stringify(user));
       setUserInfo(user);
+      navigation.navigate("HomeScreen", { username: user.name });
     } catch (error) {
       // Add your own error handler here
     }
   };
 
+
+  // Local Login
   const handleLogin = () => {
     if (email === '' || password === '') {
       Alert.alert('Error', 'Please fill in all fields');
