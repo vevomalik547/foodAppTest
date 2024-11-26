@@ -6,7 +6,10 @@ import Feeds from "../Feed/Feeds";
 
 const { height, width } = Dimensions.get("window");
 
-const HomeScreen = (props) => {
+const HomeScreen = ({props, route}) => {
+
+  const {username} = route.params || {};
+
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity for animation
   const translateY = useRef(new Animated.Value(0)).current; // Value to translate Feeds component
   const tabsTranslateY = useRef(new Animated.Value(0)).current; // Value for the sticky tabs container
@@ -82,7 +85,7 @@ const HomeScreen = (props) => {
       id: 'homepage-content',
       data: [
         { component: <HomepageAppBar /> },
-        { component: <Intro name="Pradeep" /> },
+        { component: <Intro name={username} /> },
         {
           component: (
             <View style={styles.midBanner}>

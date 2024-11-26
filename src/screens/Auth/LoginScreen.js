@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Image, Button } from 'react-native';
 import * as Google from 'expo-auth-session/providers/google'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState('');
@@ -12,6 +13,8 @@ export default function LoginScreen({ navigation }) {
     androidClientId: "672923535750-a2h7p26lgupobo39bs5c9qs9sathv71g.apps.googleusercontent.com",
     iosClientId: "672923535750-9hvpcm2m9ade4r0lqpref183ho8tn50q.apps.googleusercontent.com"
   })
+
+  const nav = useNavigation();
 
   useEffect(() => {
     handleEffect();
@@ -50,7 +53,8 @@ export default function LoginScreen({ navigation }) {
       const user = await response.json();
       await AsyncStorage.setItem("@user", JSON.stringify(user));
       setUserInfo(user);
-      navigation.navigate("HomeScreen", { username: user.name });
+      console.log("Navigation")
+      nav.navigate("HomeScreen", { username: user.name });
     } catch (error) {
       // Add your own error handler here
     }
@@ -105,6 +109,10 @@ export default function LoginScreen({ navigation }) {
 
       </View>
       <View style={styles.footer}>
+      <Button
+        title="remove local store"
+        onPress={async () => await AsyncStorage.removeItem("@user")}
+      />
         <TouchableOpacity onPress={() => navigation.navigate('Signup')}>
           <Text style={styles.footerText}>Don't have an account? Sign Up</Text>
         </TouchableOpacity>
