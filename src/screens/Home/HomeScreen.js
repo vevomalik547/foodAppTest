@@ -3,10 +3,11 @@ import React, { useRef, useState } from "react";
 import HomepageAppBar from "./components/HomepageAppBar";
 import Intro from "./components/Intro";
 import Feeds from "../Feed/Feeds";
+import Gallery from "../Gallery/Gallery";
 
 const { height, width } = Dimensions.get("window");
 
-const HomeScreen = ({props, route, username}) => {
+const HomeScreen = ({ props, route, username }) => {
 
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity for animation
   const translateY = useRef(new Animated.Value(0)).current; // Value to translate Feeds component
@@ -24,7 +25,7 @@ const HomeScreen = ({props, route, username}) => {
     }
 
     Animated.spring(translateY, {
-      toValue: scrollY > 100 ? 130 : scrollY, 
+      toValue: scrollY > 100 ? 130 : scrollY,
       useNativeDriver: true,
     }).start();
 
@@ -58,8 +59,8 @@ const HomeScreen = ({props, route, username}) => {
               styles.feedsSection,
               {
                 opacity: fadeAnim,
-                transform: [{ translateY }], 
-                height: "100%", 
+                transform: [{ translateY }],
+                height: "100%",
               },
             ]}
           >
@@ -67,7 +68,11 @@ const HomeScreen = ({props, route, username}) => {
           </Animated.View>
         );
       case "Explore":
-        return <Text style={styles.content}>This is the Explore section</Text>;
+        return (
+          <Animated.View>
+            <Gallery />
+          </Animated.View>
+        );
       case "Meals":
         return <Text style={styles.content}>This is the Meals section</Text>;
       default:
@@ -142,20 +147,22 @@ const HomeScreen = ({props, route, username}) => {
           ))}
         </View>
       )}
-      onScroll={handleScroll} 
-      scrollEventThrottle={16} 
+      onScroll={handleScroll}
+      scrollEventThrottle={16}
       pagingEnabled={true}
       horizontal={false}
       getItemLayout={(data, index) => ({
-        length: height,
-        offset: height * index, 
-        index, 
+        length: deviceHeight, // Fixed height for each item
+        offset: deviceHeight * index,
+        index,
       })}
     />
   );
 };
 
 export default HomeScreen;
+
+const { height: deviceHeight } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {

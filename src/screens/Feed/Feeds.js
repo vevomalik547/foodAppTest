@@ -15,9 +15,10 @@ const { height: deviceHeight } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
   container: {
-    flexGrow: 1,
-    backgroundColor: 'white',
-    minHeight:'100%'
+    // flexGrow: 1,
+    flex:1,
+    // backgroundColor: 'white',
+    // minHeight:'100%'
     // maxHeight: deviceHeight - 60
   },
 });

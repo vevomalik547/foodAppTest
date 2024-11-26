@@ -8,6 +8,8 @@ import {
     Dimensions,
     TouchableOpacity,
     Image,
+    TextInput,
+    Share
 } from 'react-native';
 import RBSheet from 'react-native-raw-bottom-sheet';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -46,14 +48,13 @@ const Pages = () => {
                 <ImageBackground
                     source={images[item.imagePath]}
                     style={styles.backgroundImage}
-                    // resizeMode="cover"
-                    resizeMethod='auto'
+                    resizeMode="cover"
+                    resizeMethod='cover'
                 >
                     <LinearGradient
                         colors={['transparent', 'rgba(0,0,0,0.8)', 'rgba(0,0,0,1)']}
                         style={[styles.gradientOverlay, {}]}
                     >
-
                         <View style={styles.tagsContainer}>
                             {item.imageTags.map((tag, index) => (
                                 <TouchableOpacity key={index} style={styles.tagButton}>
@@ -62,11 +63,9 @@ const Pages = () => {
                             ))}
                         </View>
 
-                        <Text style={{ color:'white',  }}><Text style={{ color:'#7FD28C', fontWeight:'bold', fontSize:24 }}>200m</Text> away from you</Text>
-                        
+                        <Text style={{ color: 'white', }}><Text style={{ color: '#7FD28C', fontWeight: 'bold', fontSize: 24 }}>200m</Text> away from you</Text>
                         <Text style={styles.description}>{item.imageDescription}</Text>
 
-                        {/* Counts */}
                         <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: 19 }}>
                             <Icon name='star' color={'white'} size={20} style={{ marginRight: 8 }} />
                             <Text style={[styles.counts, { textDecorationLine: 'none', marginRight: 4 }]}>4.95</Text>
@@ -74,52 +73,52 @@ const Pages = () => {
                             <Text style={[styles.counts, { marginRight: 10 }]}>{item.reviewCount} Reviews</Text>
                         </View>
                         {/* Price */}
-                        <View style={{ display:'flex', flexDirection:'row', alignItems:'center' }}>
+                        <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
                             <Text style={styles.price}>$ {item.price.toFixed(2)} per seat</Text>
-                            
-                            <View style={{ backgroundColor:'#7FD28C', padding:5, borderRadius:100, paddingHorizontal:10, marginLeft:10 }}>
-                            <Text>2/5 open seats</Text>
+
+                            <View style={{ backgroundColor: '#7FD28C', padding: 5, borderRadius: 100, paddingHorizontal: 10, marginLeft: 10 }}>
+                                <Text>2/5 open seats</Text>
                             </View>
                         </View>
 
-                        <View style={{ marginTop:15 }}>
-                            <Image source={require('../../../assets/btnset.png')} style={{marginLeft:-20 }} />
+                        <View style={{ marginTop: 15 }}>
+                            <Image source={require('../../../assets/btnset.png')} style={{ marginLeft: -20 }} />
                         </View>
 
                     </LinearGradient>
                 </ImageBackground >
 
             </View >
-                        <View style={styles.actionButtons}>
-                            <View>
-                                <TouchableOpacity onPress={handleLike} style={styles.btns}>
-                                    <Icon name={isLiked ? 'thumbs-up' : 'thumbs-o-up'} size={20} color="#fff" />
-                                </TouchableOpacity>
-                                <Text style={styles.btnText}>{likeCount}</Text>
-                            </View>
+            <View style={styles.actionButtons}>
+                <View>
+                    <TouchableOpacity onPress={handleLike} style={styles.btns}>
+                        <Icon name={isLiked ? 'thumbs-up' : 'thumbs-o-up'} size={20} color="#fff" />
+                    </TouchableOpacity>
+                    <Text style={styles.btnText}>{likeCount}</Text>
+                </View>
 
-                            <View>
-                                <TouchableOpacity
-                                    onPress={() => refRBSheet.current.open()}
-                                    style={styles.btns}
-                                >
-                                    <Icon name="comment" size={20} color="#fff" />
-                                </TouchableOpacity>
-                                <Text style={styles.btnText}>{item.commentCount}</Text>
-                            </View>
+                <View>
+                    <TouchableOpacity
+                        onPress={() => refRBSheet.current.open()}
+                        style={styles.btns}
+                    >
+                        <Icon name="comment" size={20} color="#fff" />
+                    </TouchableOpacity>
+                    <Text style={styles.btnText}>{item.commentCount}</Text>
+                </View>
 
-                            <View>
-                                < TouchableOpacity
-                                    style={styles.btns}
-                                    onPress={handleShare}
-                                >
-                                    <Icon name="share-alt" size={20} color="#fff" />
-                                </TouchableOpacity >
-                                <Text style={styles.btnText}>{item.commentCount}</Text>
-                            </View>
+                <View>
+                    < TouchableOpacity
+                        style={styles.btns}
+                        onPress={handleShare}
+                    >
+                        <Icon name="share-alt" size={20} color="#fff" />
+                    </TouchableOpacity >
+                    <Text style={styles.btnText}>{item.commentCount}</Text>
+                </View>
 
 
-                        </View>
+            </View>
             {/* Bottom Sheet for Comments */}
             <RBSheet
                 ref={refRBSheet}
@@ -134,8 +133,7 @@ const Pages = () => {
             >
                 <View style={styles.bottomSheet}>
                     <Text style={styles.bottomSheetTitle}>Comments</Text>
-                    {/* You can add a list of comments here */}
-                    <Text style={styles.commentText}>Add a comment...</Text>
+                    <TextInput style={styles.commentText}>Add a comment...</TextInput>
                 </View>
             </RBSheet>
         </>
@@ -148,7 +146,12 @@ const Pages = () => {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={renderItem}
                 showsVerticalScrollIndicator={false}
-                pagingEnabled // Enables scrolling one item at a time
+                pagingEnabled={true}
+                getItemLayout={(data, index) => ({
+                    length: deviceHeight, // Fixed height for each item
+                    offset: deviceHeight * index,
+                    index,
+                })}
             />
         </View>
     );
@@ -157,8 +160,9 @@ const Pages = () => {
 const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        flex:1,
+        flex: 1,
         backgroundColor: '#f8f9fa',
+        // bottom:-120
     },
     btnText: {
         color: 'white',
@@ -167,15 +171,16 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     card: {
-        minHeight: deviceHeight - 20,
+        minHeight: deviceHeight - 60,
         maxHeight: deviceHeight,
     },
     backgroundImage: {
         flex: 1,
         justifyContent: 'flex-end',
-        maxHeight:deviceHeight,
-        // resizeMode:'cover',
-    },
+        height: deviceHeight, // Fixed height
+        width: '100%', // Adjust width accordingly
+        resizeMode: 'contain', // Maintain aspect ratio without stretching
+    },    
     overlay: {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
         padding: 20,
@@ -190,7 +195,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         marginBottom: 10,
-        marginTop:10
+        marginTop: 10
     },
     tagsContainer: {
         flexDirection: 'row',

@@ -10,7 +10,17 @@
       "price": 199.99
     },
     {
-      "imagePath": "feed1",
+      "imagePath": "feed2",
+      "imageTags": ["Vegeterian", "Indian"],
+      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
+      "reviewCount": 95,
+      "likeCount": 320,
+      "commentCount": 28,
+      "shareCount": 15,
+      "price": 349.00
+    },
+    {
+      "imagePath": "feed3",
       "imageTags": ["Vegeterian", "Indian"],
       "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
       "reviewCount": 95,
@@ -30,17 +40,7 @@
       "price": 349.00
     },
     {
-      "imagePath": "feed1",
-      "imageTags": ["Vegeterian", "Indian"],
-      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
-      "reviewCount": 95,
-      "likeCount": 320,
-      "commentCount": 28,
-      "shareCount": 15,
-      "price": 349.00
-    },
-    {
-      "imagePath": "feed1",
+      "imagePath": "feed2",
       "imageTags": ["Vegeterian", "Indian"],
       "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
       "reviewCount": 200,
