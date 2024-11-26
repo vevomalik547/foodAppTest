@@ -43,11 +43,11 @@ const Pages = () => {
     const renderItem = ({ item }) => (
         <>
             <View style={styles.card}>
-                {/* Background Image */}
                 <ImageBackground
                     source={images[item.imagePath]}
                     style={styles.backgroundImage}
-                    resizeMode="cover"
+                    // resizeMode="cover"
+                    resizeMethod='auto'
                 >
                     <LinearGradient
                         colors={['transparent', 'rgba(0,0,0,0.8)', 'rgba(0,0,0,1)']}
@@ -156,7 +156,8 @@ const Pages = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flexGrow: 1,
+        flex:1,
         backgroundColor: '#f8f9fa',
     },
     btnText: {
@@ -166,18 +167,20 @@ const styles = StyleSheet.create({
         marginBottom: 8
     },
     card: {
-        height: deviceHeight, // Set each card to the device height
+        minHeight: deviceHeight - 20,
+        maxHeight: deviceHeight,
     },
     backgroundImage: {
         flex: 1,
         justifyContent: 'flex-end',
+        maxHeight:deviceHeight,
+        // resizeMode:'cover',
     },
     overlay: {
-        backgroundColor: 'rgba(0, 0, 0, 0.5)', // Add a semi-transparent overlay
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
         padding: 20,
     },
     gradientOverlay: {
-        // height: 350,
         paddingVertical: 20,
         paddingLeft: 20,
         paddingRight: 70

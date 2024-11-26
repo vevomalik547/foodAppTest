@@ -1,8 +1,8 @@
 [
     {
       "imagePath": "feed1",
-      "imageTags": ["travel", "beach", "sunset", "vacation"],
-      "imageDescription": "A serene sunset view at a tropical beach with golden sands and palm trees.",
+      "imageTags": ["Vegeterian", "Indian"],
+      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
       "reviewCount": 120,
       "likeCount": 450,
       "commentCount": 35,
@@ -10,9 +10,9 @@
       "price": 199.99
     },
     {
-      "imagePath": "feed2",
-      "imageTags": ["adventure", "mountain", "hiking", "nature"],
-      "imageDescription": "Breathtaking mountain peaks surrounded by lush green forests.",
+      "imagePath": "feed1",
+      "imageTags": ["Vegeterian", "Indian"],
+      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
       "reviewCount": 95,
       "likeCount": 320,
       "commentCount": 28,
@@ -20,7 +20,27 @@
       "price": 349.00
     },
     {
-      "imagePath": "feed3",
+      "imagePath": "feed1",
+      "imageTags": ["Vegeterian", "Indian"],
+      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
+      "reviewCount": 95,
+      "likeCount": 320,
+      "commentCount": 28,
+      "shareCount": 15,
+      "price": 349.00
+    },
+    {
+      "imagePath": "feed1",
+      "imageTags": ["Vegeterian", "Indian"],
+      "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
+      "reviewCount": 95,
+      "likeCount": 320,
+      "commentCount": 28,
+      "shareCount": 15,
+      "price": 349.00
+    },
+    {
+      "imagePath": "feed1",
       "imageTags": ["Vegeterian", "Indian"],
       "imageDescription": "Make puffed poori with potato masala and veg kurma for lunch",
       "reviewCount": 200,
