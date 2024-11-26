@@ -16,18 +16,17 @@ const iconPaths = {
     Profile: require('../../assets/tabIcons/Profile.png'),
 };
 
-export default function TabNavigator() {
+export default function TabNavigator({ username }) {
     return (
         <Tab.Navigator
             screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused }) => {
-                    const iconPath = iconPaths[route.name]; // Fetch the icon path based on the route name
-
+                    const iconPath = iconPaths[route.name];
                     return (
                         <View style={[styles.iconWrapper, focused && styles.activeIconWrapper]}>
                             <Image
                                 source={iconPath}
-                                style={[styles.icon, focused && styles.activeIcon]} // Style for icons
+                                style={[styles.icon, focused && styles.activeIcon]}
                                 resizeMode="contain"
                             />
                             <Text style={[styles.tabLabel, focused && styles.activeTabLabel]}>
@@ -36,24 +35,21 @@ export default function TabNavigator() {
                         </View>
                     );
                 },
-                tabBarLabel: ({ focused }) => (
-                    <Text style={[styles.tabLabel, focused && styles.activeTabLabel]}>
-                        {/* {route.name} */}
-                    </Text>
-                ),
                 tabBarStyle: styles.tabBar,
-                tabBarActiveTintColor: '#8B4513',
-                tabBarInactiveTintColor: '#333',
                 headerShown: false,
+                tabBarLabel: () => null
             })}
         >
-            <Tab.Screen name="Home" component={HomeScreen} />
+            <Tab.Screen name="Home">
+                {(props) => <HomeScreen {...props} username={username} />}
+            </Tab.Screen>
             <Tab.Screen name="Eat" component={EatScreen} />
             <Tab.Screen name="Reservation" component={ReservationScreen} />
             <Tab.Screen name="Profile" component={ProfileScreen} />
         </Tab.Navigator>
     );
 }
+
 
 const styles = StyleSheet.create({
     tabBar: {
@@ -83,7 +79,7 @@ const styles = StyleSheet.create({
         fontSize: 8,
         fontWeight: '400',
         color: '#333',
-        width:'100%',
+        width: '100%',
         marginTop: 8,
     },
     activeTabLabel: {

@@ -6,9 +6,9 @@ import Feeds from "../Feed/Feeds";
 
 const { height, width } = Dimensions.get("window");
 
-const HomeScreen = ({props, route}) => {
+const HomeScreen = ({props, route, username}) => {
 
-  const {username} = route.params || {};
+  // const {username} = route.params || {};
 
   const fadeAnim = useRef(new Animated.Value(0)).current; // Initial opacity for animation
   const translateY = useRef(new Animated.Value(0)).current; // Value to translate Feeds component
