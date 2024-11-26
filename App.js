@@ -1,12 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import StackNavigator from './src/navigators/StackNavigator';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#F5F3F9' }}>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <NavigationContainer>
+          <StackNavigator />
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </SafeAreaView>
   );
 }
 
